@@ -1,0 +1,35 @@
+(:Elena Saez Lascurain:)
+
+(:Reto1:)
+
+for $libro in /biblioteca/libro
+let $categoria := $libro/@categoria, $precio := ($libro/precio)
+where $categoria = "programacion" and $precio > 30
+order by $libro/titulo descending
+return
+<resultado> Título: {($libro/titulo/text())} - Precio: {($libro/precio/number())} € </resultado>
+
+(:Reto2:)
+
+for $libro in /biblioteca/libro
+let $autor :=$libro
+where $libro > 1
+return
+<resultado> {($libro/autor/text())} - Total: {($libro/number())} Libros </resultado>
+
+
+
+(:Reto3:)
+
+for $var in //libro
+let $texto := $var/publicacion > 2022, $texto:= (¡Novedad!), $precio := $var/precio
+where
+return file:write()
+<!DOCTYPE html>
+<head>
+<body>
+	<ul>
+	<li>($var/titulo/text()) ($var/publicacion) 	(¡Novedad!) - ($var/precio/number())€</li>
+	</ul>
+</body>
+</head>
